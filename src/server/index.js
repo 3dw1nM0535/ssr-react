@@ -6,7 +6,10 @@ import App from '../shared/App';
 
 const app = express();
 
-app.use('*', (req,res) => {
+//static files middleware
+app.use(express.static('public'));
+
+app.get('*', (req,res) => {
   res.send(`
     <!DOCTYPE html>
       <head>

@@ -949,7 +949,7 @@ var _jsxFileName = '/home/edwin-moses/Projects/ssr-react/src/browser/index.js';
 
 
 
-Object(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__shared_App__["a" /* default */], {
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.hydrate(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__shared_App__["a" /* default */], {
   __source: {
     fileName: _jsxFileName,
     lineNumber: 5

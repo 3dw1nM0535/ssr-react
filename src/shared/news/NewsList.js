@@ -4,7 +4,18 @@ import orderBy from 'lodash.orderby';
 import './NewsList.css';
 
 class NewsList extends Component {
+
+  state = {
+      sortOder: 'upvotes'
+  }
+
+  sortOder(order, event) {
+    event.preventDefault();
+    this.setState({ sortOrder: order });
+  }
+
   render () {
+    const news = orderBy(this.props.news, this.state.sortOrder, 'desc');
     return (
       <div className="newslist">
         <div className="header">

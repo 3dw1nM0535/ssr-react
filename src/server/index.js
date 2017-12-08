@@ -1,9 +1,8 @@
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import App from '../shared/App';
-import cors from 'cors';
 import News from '../shared/news/News';
+import cors from 'cors';
 
 
 const app = express();
@@ -139,4 +138,3 @@ app.get('*', (req,res, next) => {
 app.listen(process.env.PORT || 3000, () => {
   console.log(`http://localhost:${process.env.PORT || 3000}`);
 });
-

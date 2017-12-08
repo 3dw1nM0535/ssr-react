@@ -4,7 +4,7 @@
   "description": "Server side rendering with React",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-dev": "NODE_ENV=development webpack -w & NODE_ENV=development node server.js "
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/3dw1nM0535/ssr-react#readme",
   "dependencies": {
+    "express": "^4.16.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },

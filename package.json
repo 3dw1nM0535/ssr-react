@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/3dw1nM0535/ssr-react#readme",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.2",
+    "node-time-ago": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },

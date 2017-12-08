@@ -8111,6 +8111,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom_server__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom_server___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_App__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_cors__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_cors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_cors__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_news_News__ = __webpack_require__(142);
 var _jsxFileName = '/home/edwin-moses/Projects/ssr-react/src/server/index.js',
     _this = this;
 
@@ -8119,19 +8122,114 @@ var _jsxFileName = '/home/edwin-moses/Projects/ssr-react/src/server/index.js',
 
 
 
+
+
 var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
+
+//cors Middleware
+app.use(__WEBPACK_IMPORTED_MODULE_4_cors___default()());
 
 //static files middleware
 app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static('public'));
 
-app.get('*', function (req, res) {
-  res.send('\n    <!DOCTYPE html>\n      <head>\n        <title>Universal React</title>\n        <link rel="stylesheet" href="/css/main.css" />\n        <script src="/bundle.js"></script>\n      </head>\n\n      <body>\n        <div id="root">' + Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__shared_App__["a" /* default */], {
+app.get('/api/news', function (req, res) {
+  res.json([{
+    id: 1,
+    upvotes: 257,
+    title: "Fianto Duri, the complete tutorial",
+    author: "RubeusH",
+    date: new Date(Date.now() - 15000000)
+  }, {
+    id: 2,
+    upvotes: 221,
+    title: "Untransfiguration classes to become compulsory at Hogwarts",
+    author: "Baddock",
+    date: new Date(Date.now() - 45000000)
+  }, {
+    id: 3,
+    upvotes: 198,
+    title: "Cracking the Aurologist Interview ",
+    author: "Hetty",
+    date: new Date(Date.now() - 900000)
+  }, {
+    id: 4,
+    upvotes: 171,
+    title: "ASK WN: What do you use to digitalize your scrolls?",
+    author: "Alphard",
+    date: new Date(Date.now() - 40000000)
+  }, {
+    id: 5,
+    upvotes: 166,
+    title: "The Pragmatic Dragon Feeder",
+    author: "Baruffio",
+    date: new Date(Date.now() - 10000000)
+  }, {
+    id: 6,
+    upvotes: 145,
+    title: "The complete quidditch statistics",
+    author: "Hbeery",
+    date: new Date(Date.now() - 5000000)
+  }, {
+    id: 7,
+    upvotes: 126,
+    title: "Ordinary Wizarding Levels study guide",
+    author: "BathBabb",
+    date: new Date(Date.now() - 600000)
+  }, {
+    id: 8,
+    upvotes: 114,
+    title: "Is muggle-baiting ever acceptable?",
+    author: "Falco",
+    date: new Date(Date.now() - 60000000)
+  }, {
+    id: 9,
+    upvotes: 74,
+    title: "Conserving waterplants cheatsheet.",
+    author: "Otto",
+    date: new Date(Date.now() - 3000000)
+  }, {
+    id: 10,
+    upvotes: 59,
+    title: "Could wizards prevent WW3?",
+    author: "Cuthbert",
+    date: new Date(Date.now() - 6000000)
+  }, {
+    id: 11,
+    upvotes: 46,
+    title: "Show WN: Wand-Extinguishing Protection",
+    author: "Humphrey22",
+    date: new Date(Date.now() - 50000)
+  }, {
+    id: 12,
+    upvotes: 30,
+    title: "Do you still use Alarte Ascendare?",
+    author: "Bellatrix1",
+    date: new Date(Date.now() - 6000000)
+  }, {
+    id: 13,
+    upvotes: 10,
+    title: "Mailing lists WN readers ought to know about?",
+    author: "Dracod",
+    date: new Date(Date.now() - 60000)
+  }, {
+    id: 14,
+    upvotes: 8,
+    title: "How to tell which spell used on a bug?",
+    author: "Lupin",
+    date: new Date()
+  }]);
+});
+
+app.get('*', function (req, res, next) {
+
+  var markup = Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__shared_news_News__["a" /* default */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 123
     },
     __self: _this
-  })) + '</div>\n      </body>\n    </html>\n  ');
+  }));
+  res.send('\n    <!DOCTYPE html>\n      <head>\n        <title>Universal React</title>\n        <link rel="stylesheet" href="/css/main.css" />\n        <script src="/bundle.js"></script>\n      </head>\n\n      <body>\n        <div id="root">' + markup + '</div>\n      </body>\n    </html>\n  ');
 });
 
 app.listen(process.env.PORT || 3000, function () {
@@ -23811,7 +23909,7 @@ var App = function (_Component) {
   return App;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (App);
+/* unused harmony default export */ var _unused_webpack_default_export = (App);
 
 /***/ }),
 /* 139 */
@@ -23824,6 +23922,313 @@ module.exports = "/media/check-mark-1292787_960_720.png";
 /***/ (function(module, exports) {
 
 
+
+/***/ }),
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function () {
+
+  'use strict';
+
+  var assign = __webpack_require__(22);
+  var vary = __webpack_require__(126);
+
+  var defaults = {
+      origin: '*',
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      preflightContinue: false,
+      optionsSuccessStatus: 204
+    };
+
+  function isString(s) {
+    return typeof s === 'string' || s instanceof String;
+  }
+
+  function isOriginAllowed(origin, allowedOrigin) {
+    if (Array.isArray(allowedOrigin)) {
+      for (var i = 0; i < allowedOrigin.length; ++i) {
+        if (isOriginAllowed(origin, allowedOrigin[i])) {
+          return true;
+        }
+      }
+      return false;
+    } else if (isString(allowedOrigin)) {
+      return origin === allowedOrigin;
+    } else if (allowedOrigin instanceof RegExp) {
+      return allowedOrigin.test(origin);
+    } else {
+      return !!allowedOrigin;
+    }
+  }
+
+  function configureOrigin(options, req) {
+    var requestOrigin = req.headers.origin,
+      headers = [],
+      isAllowed;
+
+    if (!options.origin || options.origin === '*') {
+      // allow any origin
+      headers.push([{
+        key: 'Access-Control-Allow-Origin',
+        value: '*'
+      }]);
+    } else if (isString(options.origin)) {
+      // fixed origin
+      headers.push([{
+        key: 'Access-Control-Allow-Origin',
+        value: options.origin
+      }]);
+      headers.push([{
+        key: 'Vary',
+        value: 'Origin'
+      }]);
+    } else {
+      isAllowed = isOriginAllowed(requestOrigin, options.origin);
+      // reflect origin
+      headers.push([{
+        key: 'Access-Control-Allow-Origin',
+        value: isAllowed ? requestOrigin : false
+      }]);
+      headers.push([{
+        key: 'Vary',
+        value: 'Origin'
+      }]);
+    }
+
+    return headers;
+  }
+
+  function configureMethods(options) {
+    var methods = options.methods;
+    if (methods.join) {
+      methods = options.methods.join(','); // .methods is an array, so turn it into a string
+    }
+    return {
+      key: 'Access-Control-Allow-Methods',
+      value: methods
+    };
+  }
+
+  function configureCredentials(options) {
+    if (options.credentials === true) {
+      return {
+        key: 'Access-Control-Allow-Credentials',
+        value: 'true'
+      };
+    }
+    return null;
+  }
+
+  function configureAllowedHeaders(options, req) {
+    var allowedHeaders = options.allowedHeaders || options.headers;
+    var headers = [];
+
+    if (!allowedHeaders) {
+      allowedHeaders = req.headers['access-control-request-headers']; // .headers wasn't specified, so reflect the request headers
+      headers.push([{
+        key: 'Vary',
+        value: 'Access-Control-Request-Headers'
+      }]);
+    } else if (allowedHeaders.join) {
+      allowedHeaders = allowedHeaders.join(','); // .headers is an array, so turn it into a string
+    }
+    if (allowedHeaders && allowedHeaders.length) {
+      headers.push([{
+        key: 'Access-Control-Allow-Headers',
+        value: allowedHeaders
+      }]);
+    }
+
+    return headers;
+  }
+
+  function configureExposedHeaders(options) {
+    var headers = options.exposedHeaders;
+    if (!headers) {
+      return null;
+    } else if (headers.join) {
+      headers = headers.join(','); // .headers is an array, so turn it into a string
+    }
+    if (headers && headers.length) {
+      return {
+        key: 'Access-Control-Expose-Headers',
+        value: headers
+      };
+    }
+    return null;
+  }
+
+  function configureMaxAge(options) {
+    var maxAge = options.maxAge && options.maxAge.toString();
+    if (maxAge && maxAge.length) {
+      return {
+        key: 'Access-Control-Max-Age',
+        value: maxAge
+      };
+    }
+    return null;
+  }
+
+  function applyHeaders(headers, res) {
+    for (var i = 0, n = headers.length; i < n; i++) {
+      var header = headers[i];
+      if (header) {
+        if (Array.isArray(header)) {
+          applyHeaders(header, res);
+        } else if (header.key === 'Vary' && header.value) {
+          vary(res, header.value);
+        } else if (header.value) {
+          res.setHeader(header.key, header.value);
+        }
+      }
+    }
+  }
+
+  function cors(options, req, res, next) {
+    var headers = [],
+      method = req.method && req.method.toUpperCase && req.method.toUpperCase();
+
+    if (method === 'OPTIONS') {
+      // preflight
+      headers.push(configureOrigin(options, req));
+      headers.push(configureCredentials(options, req));
+      headers.push(configureMethods(options, req));
+      headers.push(configureAllowedHeaders(options, req));
+      headers.push(configureMaxAge(options, req));
+      headers.push(configureExposedHeaders(options, req));
+      applyHeaders(headers, res);
+
+      if (options.preflightContinue ) {
+        next();
+      } else {
+        // Safari (and potentially other browsers) need content-length 0,
+        //   for 204 or they just hang waiting for a body
+        res.statusCode = options.optionsSuccessStatus || defaults.optionsSuccessStatus;
+        res.setHeader('Content-Length', '0');
+        res.end();
+      }
+    } else {
+      // actual response
+      headers.push(configureOrigin(options, req));
+      headers.push(configureCredentials(options, req));
+      headers.push(configureExposedHeaders(options, req));
+      applyHeaders(headers, res);
+      next();
+    }
+  }
+
+  function middlewareWrapper(o) {
+    // if options are static (either via defaults or custom options passed in), wrap in a function
+    var optionsCallback = null;
+    if (typeof o === 'function') {
+      optionsCallback = o;
+    } else {
+      optionsCallback = function (req, cb) {
+        cb(null, o);
+      };
+    }
+
+    return function corsMiddleware(req, res, next) {
+      optionsCallback(req, function (err, options) {
+        if (err) {
+          next(err);
+        } else {
+          var corsOptions = assign({}, defaults, options);
+          var originCallback = null;
+          if (corsOptions.origin && typeof corsOptions.origin === 'function') {
+            originCallback = corsOptions.origin;
+          } else if (corsOptions.origin) {
+            originCallback = function (origin, cb) {
+              cb(null, corsOptions.origin);
+            };
+          }
+
+          if (originCallback) {
+            originCallback(req.headers.origin, function (err2, origin) {
+              if (err2 || !origin) {
+                next(err2);
+              } else {
+                corsOptions.origin = origin;
+                cors(corsOptions, req, res, next);
+              }
+            });
+          } else {
+            next();
+          }
+        }
+      });
+    };
+  }
+
+  // can pass either an options hash, an options delegate, or nothing
+  module.exports = middlewareWrapper;
+
+}());
+
+
+/***/ }),
+/* 142 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewsList__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewsList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__NewsList__);
+var _jsxFileName = '/home/edwin-moses/Projects/ssr-react/src/shared/news/News.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var News = function (_Component) {
+  _inherits(News, _Component);
+
+  function News(props) {
+    _classCallCheck(this, News);
+
+    var _this = _possibleConstructorReturn(this, (News.__proto__ || Object.getPrototypeOf(News)).call(this, props));
+
+    var initialData = void 0;
+
+    _this.state = { news: initialData };
+
+    return _this;
+  }
+
+  _createClass(News, [{
+    key: 'render',
+    value: function render() {
+      var news = this.state.news;
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__NewsList__["default"], { news: news, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        },
+        __self: this
+      });
+    }
+  }]);
+
+  return News;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (News);
+
+/***/ }),
+/* 143 */
+/***/ (function(module, __webpack_exports__) {
+
+"use strict";
+throw new Error("Module build failed: SyntaxError: Unexpected token (2:12)\n\n\u001b[0m \u001b[90m 1 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mReact\u001b[39m\u001b[33m,\u001b[39m { \u001b[33mComponent\u001b[39m } from \u001b[32m'react'\u001b[39m\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 2 | \u001b[39m\u001b[36mimport\u001b[39m from \n \u001b[90m   | \u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n");
 
 /***/ })
 /******/ ]);

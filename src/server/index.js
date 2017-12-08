@@ -15,7 +15,7 @@ app.get('*', (req,res) => {
       <head>
         <title>Universal React</title>
         <link rel="stylesheet" href="/css/main.css" />
-        <script src="/bundle.js" defer></script>
+        <script src="/bundle.js"></script>
       </head>
 
       <body>

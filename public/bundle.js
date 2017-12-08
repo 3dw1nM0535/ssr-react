@@ -18333,7 +18333,7 @@ var App = function (_Component) {
               },
               __self: this
             },
-            'Welcome to the React on the server'
+            'Welcome to React on the server'
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

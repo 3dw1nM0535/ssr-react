@@ -8125,7 +8125,7 @@ var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static('public'));
 
 app.get('*', function (req, res) {
-  res.send('\n    <!DOCTYPE html>\n      <head>\n        <title>Universal React</title>\n        <link rel="stylesheet" href="/css/main.css" />\n        <script src="/bundle.js" defer></script>\n      </head>\n\n      <body>\n        <div id="root">' + Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__shared_App__["a" /* default */], {
+  res.send('\n    <!DOCTYPE html>\n      <head>\n        <title>Universal React</title>\n        <link rel="stylesheet" href="/css/main.css" />\n        <script src="/bundle.js"></script>\n      </head>\n\n      <body>\n        <div id="root">' + Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__shared_App__["a" /* default */], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 22
@@ -23791,7 +23791,7 @@ var App = function (_Component) {
               },
               __self: this
             },
-            'Welcome to the React on the server'
+            'Welcome to React on the server'
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

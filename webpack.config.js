@@ -1,9 +1,9 @@
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const autoPrefixer = require('autoprefixer');
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var autoPrefixer = require('autoprefixer');
 
 //browser/client side code configuration and transpilation
-const browserConfig = {
+var browserConfig = {
   entry: './src/browser/index.js',
   output: {
     path: __dirname,
@@ -57,7 +57,7 @@ const browserConfig = {
 };
 
 //server-side/back-end code configuration and transpilation
-const serverConfig = {
+var serverConfig = {
   entry: './src/server/index.js',
   target: 'node',
   output: {
@@ -97,6 +97,7 @@ const serverConfig = {
   }
 };
 
+//module export as an array of config vars
 module.exports = [browserConfig, serverConfig];
 
 

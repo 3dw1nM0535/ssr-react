@@ -1,8 +1,17 @@
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import News from '../shared/news/News';
+import App from '../shared/App';
+import routes from '../shared/routes';
 import cors from 'cors';
+import 'isomorphic-fetch';
+import { StaticRouter, matchPath } from 'react-router-dom';
+import serialize from 'serialize-javascript';
+import sourceMapSupport from 'source-map-support';
+
+if (process.env.NODE_ENV === 'development') {
+  sourceMapSupport.install();
+}
 
 
 const app = express();
@@ -119,20 +128,34 @@ app.get('/api/news', (req, res) => {
 
 app.get('*', (req,res, next) => {
 
-  const markup = renderToString(<News />);
-  res.send(`
-    <!DOCTYPE html>
-      <head>
-        <title>Universal React</title>
-        <link rel="stylesheet" href="/css/main.css" />
-        <script src="/bundle.js"></script>
-      </head>
+  const currentRoute = routes.find(route => matchPath(req.url, route));
+  const requestInitialData = currentRoute.component.requestInitialData && currentRoute.component.requestInitialData();
 
-      <body>
-        <div id="root">${markup}</div>
-      </body>
-    </html>
-  `);
+
+  Promise.resolve(requestInitialData)
+      .then(initialData => {
+        const context = { initialData };
+        const markup = renderToString(
+          <StaticRouter location={req.url} context={context}>
+            <App />
+          </StaticRouter>
+        );
+
+        res.send(`
+          <!DOCTYPE html>
+          <head>
+            <title>W Combinator</title>
+            <link rel="stylesheet" href="/css/main.css" />
+            <script src="/bundle.js" defer></script>
+            <script>window.__initialData__ = ${serialize(initialData)}</script>
+          </head>
+
+          <body>
+            <div id="root">${markup}</div>
+          </body>
+        </html>
+      `);
+    })
 });
 
 app.listen(process.env.PORT || 3000, () => {

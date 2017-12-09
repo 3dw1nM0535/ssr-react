@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoPrefixer = require('autoprefixer');
+var nodeExternals = require('webpack-node-externals');
 
 //browser/client side code configuration and transpilation
 var browserConfig = {
@@ -60,6 +61,7 @@ var browserConfig = {
 var serverConfig = {
   entry: './src/server/index.js',
   target: 'node',
+  externals: [nodeExternals()],
   output: {
     path: __dirname,
     filename: 'server.js',

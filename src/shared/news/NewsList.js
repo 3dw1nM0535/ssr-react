@@ -2,38 +2,40 @@ import React, { Component } from 'react';
 import timeAgo from 'node-time-ago';
 import orderBy from 'lodash.orderby';
 import './NewsList.css';
+import w18 from './w18.png';
 
 class NewsList extends Component {
 
   state = {
-      sortOder: 'upvotes'
-  }
+      sortOrder: 'upvotes'
+  };
 
-  sortOder(order, event) {
+  setOrder(order, event) {
     event.preventDefault();
     this.setState({ sortOrder: order });
   }
 
   render () {
-    const news = orderBy(this.props.news, this.state.sortOrder, 'desc');
+    const news = orderBy(this.props.news, this.state.sortOrder, 'asc');
     return (
       <div className="newslist">
         <div className="header">
           <div className="header-title">
+            <img src={w18} width="18" height="18" className="logo" />
             <strong>Wizard News</strong>
           </div>
           <div className="sort">
             Sort By: {' '}
             <a
               href='#'
-              className={this.state.sortOder === 'upvotes' && 'sort-selected'}
-              onClick={this.sortOrder.bind(this, 'upvotes')}>
+              className={this.state.sortOrder ? 'upvotes' : 'sort-selected'}
+              onClick={this.setOrder.bind(this, 'upvotes')}>
               Upvotes
             </a>|
             <a
               href="#"
-              className={this.state.sortOrder === 'date' && 'sort-selected'}
-              onClick={this.sortOrder.bind(this, 'date')}>
+              className={this.state.sortOrder ? 'date' : 'sort-selected'}
+              onClick={this.setOrder.bind(this, 'date')}>
               Date
             </a>
           </div>
